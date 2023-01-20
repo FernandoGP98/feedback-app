@@ -3,10 +3,13 @@ import { useState } from 'react'
 import Header from './components/header'
 //import FeedbackItem from './components/FeedbackItem'
 import { v4 as uuidv4 } from 'uuid'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import FeedbackData from './data/FeedbackData'
 import FeedbackList from './components/FeedbackList'
 import FeedbackStats from './components/FeedbackStats'
 import FeedbackForm from './components/FeedbackForm'
+import About from './pages/About'
+import AboutIconLink from './components/AboutIconLink'
 function App(){
     /*
     Construyendo un array de lo que regresa
@@ -32,14 +35,24 @@ function App(){
 
     //return JSX
     return (
-        <>
+        <Router>
             <Header />
             <div className="container">
-                <FeedbackForm handleAdd={addFeedBack}></FeedbackForm>
-                <FeedbackStats feedback={feedback}></FeedbackStats>
-                <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
+                <Routes>
+                    <Route exact path='/' element={
+                        <>
+                        <FeedbackForm handleAdd={addFeedBack}></FeedbackForm>
+                        <FeedbackStats feedback={feedback}></FeedbackStats>
+                        <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
+                        </>
+                    }>
+                    </Route>
+                    
+                    <Route path='about' element={<About/>}></Route>
+                </Routes>
+                <AboutIconLink/>
             </div>
-        </>
+        </Router>
     )
 }
 
