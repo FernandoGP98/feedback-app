@@ -10,6 +10,10 @@ import FeedbackStats from './components/FeedbackStats'
 import FeedbackForm from './components/FeedbackForm'
 import About from './pages/About'
 import AboutIconLink from './components/AboutIconLink'
+
+//Demostracion de useParams y NestedRoutes
+// import Post from './components/Post'
+
 function App(){
     /*
     Construyendo un array de lo que regresa
@@ -49,6 +53,7 @@ function App(){
                     </Route>
                     
                     <Route path='/about' element={<About/>}></Route>
+                    {/* <Route path='/post/*' element={<Post/>}></Route> */}
                 </Routes>
                 <AboutIconLink/>
             </div>
