@@ -10,6 +10,7 @@ import FeedbackStats from './components/FeedbackStats'
 import FeedbackForm from './components/FeedbackForm'
 import About from './pages/About'
 import AboutIconLink from './components/AboutIconLink'
+import { FeedbackProvider } from './context/FeedbackContext'
 
 //Demostracion de useParams y NestedRoutes
 // import Post from './components/Post'
@@ -39,25 +40,27 @@ function App(){
 
     //return JSX
     return (
-        <Router>
-            <Header />
-            <div className="container">
-                <Routes>
-                    <Route exact path='/' element={
-                        <>
-                        <FeedbackForm handleAdd={addFeedBack}></FeedbackForm>
-                        <FeedbackStats feedback={feedback}></FeedbackStats>
-                        <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
-                        </>
-                    }>
-                    </Route>
-                    
-                    <Route path='/about' element={<About/>}></Route>
-                    {/* <Route path='/post/*' element={<Post/>}></Route> */}
-                </Routes>
-                <AboutIconLink/>
-            </div>
-        </Router>
+        <FeedbackProvider>
+            <Router>
+                <Header />
+                <div className="container">
+                    <Routes>
+                        <Route exact path='/' element={
+                            <>
+                            <FeedbackForm handleAdd={addFeedBack}></FeedbackForm>
+                            <FeedbackStats feedback={feedback}></FeedbackStats>
+                            <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
+                            </>
+                        }>
+                        </Route>
+                        
+                        <Route path='/about' element={<About/>}></Route>
+                        {/* <Route path='/post/*' element={<Post/>}></Route> */}
+                    </Routes>
+                    <AboutIconLink/>
+                </div>
+            </Router>
+        </FeedbackProvider>
     )
 }
 
