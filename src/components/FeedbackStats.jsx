@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Context, useContext } from 'react'
+import { useContext } from 'react'
 import FeedbackContext from '../context/FeedbackContext'
 
 export default function FeedbackStats() {
