@@ -1,13 +1,16 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import RatingSelect from './RatingSelect'
 import Card from "./shared/Card"
 import Button from "./shared/Button"
+import FeedbackContext from "../context/FeedbackContext"
 
-export default function FeedbackForm({ handleAdd }) {
+export default function FeedbackForm() {
   const [text, setText] = useState('')
   const [rating, setRating] = useState(10)
   const [btnDisable, setBtnDisable] = useState(true)
   const [message, setMessage] = useState('')
+
+  const { addFeedBack } = useContext(FeedbackContext)
 
   const handleTextChange = (e) => {
     // Validation everytime we type somthing in
@@ -36,7 +39,7 @@ export default function FeedbackForm({ handleAdd }) {
         text: text,
         rating: rating
       }
-      handleAdd(newFeedBack)
+      addFeedBack(newFeedBack)
       setText('')
     }
   }
